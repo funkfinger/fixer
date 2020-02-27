@@ -30,11 +30,18 @@ const FixedTextBox = ({ text, textOk, textPlain, textPlainLength }) => {
         id="checked-text-area"
         className={`fixed-text-area ${textOk ? 'textOk' : 'textBad'}`}
       >
-        <div>{text}</div>
-        <textarea id="copyTextbox" ref={textAreaRef} defaultValue={textPlain} />
-        <p className="character-count">
-          {textPlainLength} character{textPlainLength === 1 ? '' : 's'}
-        </p>
+        <div className="badCharacterMessage">BAD CHARACTER IN MESSAGE</div>
+        <div className="message">
+          <div>&nbsp;{text}</div>
+          <textarea
+            id="copyTextbox"
+            ref={textAreaRef}
+            defaultValue={textPlain}
+          />
+          <p className="character-count">
+            {textPlainLength} character{textPlainLength === 1 ? '' : 's'}
+          </p>
+        </div>
       </div>
       <button
         onClick={copyToClipboard}
