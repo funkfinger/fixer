@@ -6,7 +6,7 @@ const TextBox = ({ placeholder, callback, defaultValue, readonly, textOk }) => {
     <textarea
       className={`TextBox ${textOk}`}
       placeholder={placeholder}
-      cols="30"
+      cols="20"
       rows="5"
       onChange={callback}
       defaultValue={defaultValue}

@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextBox from '../TextBox/TextBox';
-
 const FixedTextBox = ({ text, textOk }) => {
   return (
-    <TextBox
-      placeholder="enter text here..."
-      defaultValue={text}
-      readonly
-      textOk={textOk}
-    />
+    <div className={`fixed-text-area ${textOk}`}>{text}</div>
+    // <TextBox placeholder="" defaultValue={text} readonly textOk={textOk} />
   );
 };
 
@@ -20,7 +14,7 @@ FixedTextBox.propTypes = {
 };
 
 FixedTextBox.defaultProps = {
-  text: '',
+  text: 'enter text above...',
   textOk: '',
 };
 

@@ -32,3 +32,18 @@ body {
 .textBad {
   background-color: rgb(224, 182, 182);
 }
+
+.textOk {
+  background-color: lightgreen;
+}
+
+.fixed-text-area {
+  padding: 1em;
+  border: 1px #fff solid;
+}
+
+@media (min-width: 768px) {
+  #root {
+    max-width: 800px;
+  }
+}
