@@ -23,14 +23,15 @@ const buildMessageText = characters => {
   let messageCount;
   const message = characters.map((character, i) => {
     messageCount = Math.floor(i / 160) + 1;
+    const toggle = messageCount % 2 === 0 ? 1 : 2;
     const c = Object.assign(character);
     // eslint-disable-next-line react/no-array-index-key
     return c.ok ? (
-      <em key={i} className={`m${messageCount}`}>
+      <em key={i} className={`m${toggle}`}>
         {c.character}
       </em>
     ) : (
-      <i key={i} className={`m${messageCount}`}>
+      <i key={i} className={`m${toggle}`}>
         {c.character}
       </i>
     );
