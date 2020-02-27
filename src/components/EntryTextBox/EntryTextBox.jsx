@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import TextBox from '../TextBox/TextBox';
 
 const EntryTextBox = ({ callback }) => {
-  const [text, setText] = useState('');
-
   const changeText = newVal => {
-    setText(newVal);
+    // setText(newVal);
     callback(newVal);
   };
 
@@ -17,7 +15,6 @@ const EntryTextBox = ({ callback }) => {
         changeText(e.target.value);
       }}
       placeholder="enter text here..."
-      defaultValue={text}
     />
   );
 };
