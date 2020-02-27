@@ -36,7 +36,11 @@ const FixedTextBox = ({ text, textOk, textPlain, textPlainLength }) => {
           {textPlainLength} character{textPlainLength === 1 ? '' : 's'}
         </p>
       </div>
-      <button onClick={copyToClipboard} type="button" disabled={buttonDisabled}>
+      <button
+        onClick={copyToClipboard}
+        type="button"
+        disabled={!textOk && !buttonDisabled}
+      >
         copy text to clipboard<em>{coppiedMessage}</em>
       </button>
     </div>

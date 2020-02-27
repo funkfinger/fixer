@@ -35,9 +35,10 @@ const App = () => {
   const [textPlainLength, setTextPlainLength] = useState(0);
 
   const checkText = textToCheck => {
+    const trimmedText = textToCheck.trim();
     let ok = true;
     const textArray = [];
-    textToCheck.split('').forEach(character => {
+    trimmedText.split('').forEach(character => {
       const characterObj = { character, ok: true };
       if (characterObj.character.charCodeAt(0) < 32) characterObj.ok = false;
       if (!gsmCharSet.includes(character)) {
@@ -51,8 +52,8 @@ const App = () => {
     setText(message);
     if (ok) {
       setTextOk(true);
-      setTextPlain(textToCheck);
-      setTextPlainLength(textToCheck.length + addDoubleCharacters(textArray));
+      setTextPlain(trimmedText);
+      setTextPlainLength(trimmedText.length + addDoubleCharacters(textArray));
     } else {
       setTextOk(false);
       setTextPlain('');
