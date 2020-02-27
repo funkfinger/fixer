@@ -1,7 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const FixedTextBox = ({ text, textOk, textPlain, textPlainLength }) => {
+const FixedTextBox = ({
+  text,
+  textOk,
+  textPlain,
+  textPlainLength,
+  messageCount,
+}) => {
   const textAreaRef = useRef(null);
   const [coppiedMessage, setCoppiedMessage] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(!textOk);
@@ -30,7 +36,7 @@ const FixedTextBox = ({ text, textOk, textPlain, textPlainLength }) => {
         id="checked-text-area"
         className={`fixed-text-area ${textOk ? 'textOk' : 'textBad'}`}
       >
-        <div className="badCharacterMessage">BAD CHARACTER IN MESSAGE</div>
+        <div className="badCharacterMessage">BAD CHARACTER IN MESSAGE!</div>
         <div className="message">
           <div>&nbsp;{text}</div>
           <textarea
@@ -39,7 +45,8 @@ const FixedTextBox = ({ text, textOk, textPlain, textPlainLength }) => {
             defaultValue={textPlain}
           />
           <p className="character-count">
-            {textPlainLength} character{textPlainLength === 1 ? '' : 's'}
+            {textPlainLength} character{textPlainLength === 1 ? ' / ' : 's / '}
+            {messageCount} message{messageCount === 1 ? '' : 's'}
           </p>
         </div>
       </div>
@@ -59,6 +66,7 @@ FixedTextBox.propTypes = {
   textOk: PropTypes.bool,
   textPlain: PropTypes.string,
   textPlainLength: PropTypes.number,
+  messageCount: PropTypes.number,
 };
 
 FixedTextBox.defaultProps = {
@@ -66,6 +74,7 @@ FixedTextBox.defaultProps = {
   textOk: true,
   textPlain: '',
   textPlainLength: 0,
+  messageCount: 0,
 };
 
 export default FixedTextBox;

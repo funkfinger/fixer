@@ -20,12 +20,22 @@ const addDoubleCharacters = characters => {
 };
 
 const buildMessageText = characters => {
-  const text = characters.map((character, i) => {
+  let messageCount;
+  const message = characters.map((character, i) => {
+    messageCount = Math.floor(i / 160) + 1;
     const c = Object.assign(character);
     // eslint-disable-next-line react/no-array-index-key
-    return c.ok ? <em key={i}>{c.character}</em> : <i key={i}>{c.character}</i>;
+    return c.ok ? (
+      <em key={i} className={`m${messageCount}`}>
+        {c.character}
+      </em>
+    ) : (
+      <i key={i} className={`m${messageCount}`}>
+        {c.character}
+      </i>
+    );
   });
-  return text;
+  return { message, messageCount };
 };
 
 const App = () => {
@@ -33,6 +43,7 @@ const App = () => {
   const [textOk, setTextOk] = useState(true);
   const [textPlain, setTextPlain] = useState('');
   const [textPlainLength, setTextPlainLength] = useState(0);
+  const [messageCount, setMessageCount] = useState(0);
 
   const checkText = textToCheck => {
     const trimmedText = textToCheck.trim();
@@ -48,8 +59,9 @@ const App = () => {
       textArray.push(characterObj);
     });
 
-    const message = buildMessageText(textArray);
+    const { message, messageCount } = buildMessageText(textArray);
     setText(message);
+    setMessageCount(messageCount);
     if (ok) {
       setTextOk(true);
       setTextPlain(trimmedText);
@@ -72,6 +84,7 @@ const App = () => {
           textOk={textOk}
           textPlain={textPlain}
           textPlainLength={textPlainLength}
+          messageCount={messageCount}
         />
       </main>
     </div>
